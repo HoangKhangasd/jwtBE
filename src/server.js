@@ -18,6 +18,7 @@ configCors(app);
  configViewEngine(app);
  app.use(bodyParser.json());
  app.use(bodyParser.urlencoded({ extended: true }));
+ app.use('./Upload', express.static('Upload'));
  //test jwt
 //  createJWT();
 //  let decodedData = verifyToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiemVybyIsImFkZHJlc3MiOiJoY20iLCJpYXQiOjE2OTc0MzM0MjN9.LTu_T_oxB8Zu96YGP1wpUSkItto21sKFzHdVUYCVGy0")
@@ -45,11 +46,11 @@ app.use(cookieParse());
     console.log("jwt backend port = "+PORT);
  })
 
- app.get("/api/getAllFood",(req,res)=>{
-  sql = "SELECT * FROM food ";
-  db.query(sql, (err, data) => {
-    console.log(data)
-    if (err) return res.json("Error");
-    return res.json(data);
-  });
- })
+//  app.get("/api/getAllFood",(req,res)=>{
+//   sql = "SELECT * FROM food ";
+//   db.query(sql, (err, data) => {
+//     console.log(data)
+//     if (err) return res.json("Error");
+//     return res.json(data);
+//   });
+//  })
