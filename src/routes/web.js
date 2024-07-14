@@ -34,8 +34,52 @@ const initWebRoutes = (app) => {
   router.get("/api/Img", handleImg.getImg);
 
   //rest api
-  router.get("/api/test-api", apiController.testApi);
+  router.get("/api/test-api/:Id", async (req, res) => {
+    try {
+      const { Id } = req.params;
+      console.log(Id);
+      const filePath = { root: path.join(__dirname, "./Upload") };
+      console.log(Id);
+      if (!Id || Id == "null") {
+        return res.sendFile("", filePath, (err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
+      }
+  
+      return res.sendFile(`${Id}`, filePath, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    } catch (error) {
+      return res.status(404).send(error.message);
+    }
+  });
 
+  router.get("/send/:Id",  async (req, res) => {
+    try {
+      const { Id } = req.params;
+      const filePath = { root: path.join(__dirname, "../Upload") };
+      console.log(Id);
+      if (!Id || Id == "null") {
+        return res.sendFile("", filePath, (err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
+      }
+  
+      return res.sendFile(`${Id}`, filePath, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    } catch (error) {
+      return res.status(404).send(error.message);
+    }
+  } );
   return app.use("/", router);
 };
 export default initWebRoutes;

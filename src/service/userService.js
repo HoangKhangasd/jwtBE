@@ -6,7 +6,6 @@ import db from '../models';
 // get the clien
 
 // get the promise implementation, we will use bluebird
-import bluebird from 'bluebird';
 
 // create the connection, specify bluebird as Promise
 

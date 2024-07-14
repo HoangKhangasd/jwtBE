@@ -27,7 +27,7 @@ const initApiRoutes = (app) => {
 
 
 //rest api
-router.all('*',checkUserJWT,checkUserPermission);
+// router.all('*',checkUserJWT,checkUserPermission);
 //router.get("/test-api", apiController.testApi);
 router.post("/register",apiController.handleRegister);
 router.post("/login",apiController.handleLogin);

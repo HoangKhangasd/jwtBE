@@ -9,13 +9,22 @@ import {createJWT, verifyToken } from './middleware/JWTAction';
 import cookieParse from 'cookie-parser';
 const mysql = require("mysql");
 require("dotenv").config();
+const cors = require('cors');
  const app = express();
  const PORT = process.env.PORT || 8080;
 
 
 
-configCors(app);
+// configCors(app);
  configViewEngine(app);
+
+const corsOptions ={
+    origin:true, 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+
+app.use(cors(corsOptions));
  app.use(bodyParser.json());
  app.use(bodyParser.urlencoded({ extended: true }));
  app.use('./Upload', express.static('Upload'));
